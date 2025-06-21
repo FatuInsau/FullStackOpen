@@ -1,4 +1,4 @@
-# [Full Stack Open 2020](https://fullstackopen.com/en/)
+# [Full Stack Open 2023](https://fullstackopen.com/en/)
 
 Este curso se imparte en el Departamento de Informática de la Universidad de Helsinki en la primavera de 2023.
 
@@ -28,11 +28,3 @@ GraphQL, una alternativa moderna a las APIs REST, también se abarca en este cur
 ### [Part 8 - GraphQL](./part8)
 
 ### [Part 9 - Typescript](./part9) -->
-
--- English
-
-This course is held at the Department of Computer Science at the University of Helsinki in Spring 2023.
-
-It serves as an introduction to modern web application development with JavaScript. The main focus is on building single page applications with ReactJS that use REST APIs built with Node.js.
-
-GraphQL, a modern alternative to REST APIs is also covered by this course. As well as testing, configuration & environment management, and the use of MongoDB for storing the application’s data. A part on TypeScript can also be found on this year's edition. This repository contains my solutions for this course's exercises.
