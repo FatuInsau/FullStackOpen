@@ -30,14 +30,30 @@ const App = () => {
     copy[selected] += 1
     return setVotes(copy)
   }
+
+  const mostVote = () => {
+    let numeromayor = 0
+    let j = 0
+    for(let i=0; i<votes.length; i++){
+      if(votes[i]>numeromayor){ // 
+        numeromayor = votes[i];
+        j = i
+      }
+    }
+    return anecdotes[j];
+  }
   
 
   return (
     <div>
+      <h1>Anecdote of the day</h1>
       <p>{anecdotes[selected]}</p>
       <p>Has {votes[selected]} votes.</p>
       <button onClick={handleVoteClick}>Vote</button>
       <button onClick={handleAnecdoteClick}>Next anecdote</button>
+      <br />
+      <h1>Anecdote with most votes</h1>
+      <p>{mostVote()}</p>
     </div>
   )
 }
