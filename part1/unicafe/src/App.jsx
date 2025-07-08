@@ -12,6 +12,12 @@ const App = () => {
   const handleNeutralClick = () => { setNeutral(neutral+1) }
   const handleBadClick = () => { setBad(bad+1) }
 
+  const all = good+neutral+bad
+  const promedio = (good-bad)/all
+  const positivo = good*100/all?good*100/all:0
+
+
+
   return (
     <div>
       <h1> Give Feedback</h1>
@@ -22,6 +28,9 @@ const App = () => {
       <Estadistica text={'good'} value={good}/>
       <Estadistica text={'neutral'} value={neutral}/>
       <Estadistica text={'bad'} value={bad}/>
+      <Estadistica text={'all'} value={all}/>
+      <Estadistica text={'average'} value={promedio}/>
+      <Estadistica text={'positive'} value={`${positivo} %`}/>
     </div>
   )
 }
