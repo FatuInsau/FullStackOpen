@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import Boton from './Boton'
-import Estadistica from './Estadistica'
+import Statistics from './Statistics'
 
 const App = () => {
   // guarda los clics de cada botón en su propio estado
@@ -13,8 +13,14 @@ const App = () => {
   const handleBadClick = () => { setBad(bad+1) }
 
   const all = good+neutral+bad
-  const promedio = (good-bad)/all
-  const positivo = good*100/all?good*100/all:0
+  const info = {
+    good: good,
+    neutral:neutral,
+    bad:bad,
+    all: all,
+    promedio:(good-bad)/all?(good-bad)/all:0,
+    positivo: good*100/all?good*100/all:0
+  }
 
 
 
@@ -24,13 +30,8 @@ const App = () => {
       <Boton handleClick={handleGoodClick} text={'good'}/>
       <Boton handleClick={handleNeutralClick} text={'neutral'}/>
       <Boton handleClick={handleBadClick} text={'bad'}/>
-      <h1>Statistics</h1>
-      <Estadistica text={'good'} value={good}/>
-      <Estadistica text={'neutral'} value={neutral}/>
-      <Estadistica text={'bad'} value={bad}/>
-      <Estadistica text={'all'} value={all}/>
-      <Estadistica text={'average'} value={promedio}/>
-      <Estadistica text={'positive'} value={`${positivo} %`}/>
+      
+      <Statistics info={info}/>
     </div>
   )
 }
