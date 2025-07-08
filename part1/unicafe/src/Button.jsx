@@ -1,4 +1,4 @@
-const Boton = (props) => {
+const Button = (props) => {
   return (
       <button onClick={props.handleClick}>
         {props.text}
@@ -6,4 +6,4 @@ const Boton = (props) => {
   )
 }
 
-export default Boton
+export default Button
