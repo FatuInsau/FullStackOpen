@@ -9,13 +9,13 @@ GraphQL, una alternativa moderna a las APIs REST, también se abarca en este cur
 <!-- 
 [couse certificate](https://studies.cs.helsinki.fi/stats/api/certificate/fullstackopen/en/fff9bc0633b27820d3a04756dd40455e) -->
 
-### [Part 0 - Fundamentals of Web apps](./part0)
+### [Part 0 - Fundamentos de las aplicaciones](./part0)
 
-### [Part 1 - Introduction to React](./part1)
+### [Part 1 - Introducción a React](./part1)
 
-<!-- ### [Part 2 - Communicating with server](./part2)
+### [Part 2 - Comunicándose con el servidor](./part2)
 
-### [Part 3 - Programming a server with NodeJS and Express](./part3)
+<!-- ### [Part 3 - Programming a server with NodeJS and Express](./part3)
 
 ### [Part 4 - Testing Express servers, user administration](./part4)
 
