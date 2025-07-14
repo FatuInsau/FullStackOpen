@@ -46,13 +46,13 @@ const App = () => {
 
   return (
     <div>
-      <h1>Anecdote of the day</h1>
+      <h2>Anecdote of the day</h2>
       <p>{anecdotes[selected]}</p>
       <p>Has {votes[selected]} votes.</p>
       <button onClick={handleVoteClick}>Vote</button>
       <button onClick={handleAnecdoteClick}>Next anecdote</button>
       <br />
-      <h1>Anecdote with most votes</h1>
+      <h2>Anecdote with most votes</h2>
       <p>{mostVote()}</p>
     </div>
   )
