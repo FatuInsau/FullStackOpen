@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import axios from 'axios'
 import Filter from './components/Filter'
 import PersonForm from './components/PersonForm'
 import Persons from './components/Persons'
@@ -26,11 +25,26 @@ const App = () => {
 
   const addPerson = (event) => {
     event.preventDefault()
-    const repetido = persons.find((person) => { 
+    const repetidoNombre = persons.find((person) => { 
       return person.name === newName 
     })
-    if (repetido) {
+    const repetidoNumero = persons.find((person) => { 
+      return person.number === newNumber 
+    })
+    if (repetidoNombre && repetidoNumero) {
       alert(`${newName} is already added to phonebook`)
+    } else if (repetidoNombre) {
+      if (window.confirm(`${newName} is already added to phonebook, replace the old number with a new one?`)) {
+        const changePerson = persons.find(n => n.name === newName)
+        const changePersons = {... changePerson, number: newNumber}
+        personService
+          .update(changePerson.id , changePersons)
+          .then( returnedPerson => {
+            setPersons(persons.map(p => p.id !== returnedPerson.id ? p : returnedPerson))
+            setNewName('')
+            setNewNumber('')
+          })
+    }
     } else {
       const personObject = {
         name: newName,
