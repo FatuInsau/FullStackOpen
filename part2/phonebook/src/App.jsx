@@ -3,6 +3,7 @@ import Filter from './components/Filter'
 import PersonForm from './components/PersonForm'
 import Persons from './components/Persons'
 import personService from './services/persons'
+import Notification from './components/Notification'
 
 const App = () => {
 
@@ -10,6 +11,7 @@ const App = () => {
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber] = useState('')
   const [newFilter, setNewFilter] = useState('')
+  const [notificationMessage, setNotificationMessage] = useState(null)
 
   useEffect(() => {
     personService
@@ -32,9 +34,11 @@ const App = () => {
       return person.number === newNumber 
     })
     if (repetidoNombre && repetidoNumero) {
+      // Ya esta agregado igual
       alert(`${newName} is already added to phonebook`)
     } else if (repetidoNombre) {
       if (window.confirm(`${newName} is already added to phonebook, replace the old number with a new one?`)) {
+        // Se cambia el numero
         const changePerson = persons.find(n => n.name === newName)
         const changePersons = {... changePerson, number: newNumber}
         personService
@@ -44,8 +48,13 @@ const App = () => {
             setNewName('')
             setNewNumber('')
           })
+        setNotificationMessage(`${changePerson.name} was successfully updated`)
+        setTimeout(() => {
+          setNotificationMessage(null)
+        }, 5000)
     }
     } else {
+      // Se crea un nuevo contacto
       const personObject = {
         name: newName,
         number: newNumber
@@ -57,6 +66,10 @@ const App = () => {
         setNewName('')
         setNewNumber('')
       })
+      setNotificationMessage(`Added ${personObject.name}`)
+      setTimeout(() => {
+          setNotificationMessage(null)
+        }, 5000)
     }  
   }
 
@@ -88,6 +101,8 @@ const App = () => {
   return (
     <div>
       <h2>Phonebook</h2>
+
+      <Notification message={notificationMessage} />
 
       <Filter handleFilterChange={handleFilterChange}/>
 
