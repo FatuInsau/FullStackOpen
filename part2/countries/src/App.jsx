@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
 import countrieService from './service/countries'
+import CountrieInfo from './components/CountrieInfo'
+import Countrie from './components/Countrie'
 
 function App() {
 
@@ -25,31 +27,19 @@ function App() {
   }
 
   const showCountries = () => {
-    console.log(countries)
     if (!filter) {
       return null
     } else if (countries.length>10) {
       return <p> Too many matches, specify another filter</p>
     } else if (countries.length>1) {
-      return (countries.map(n => <p key={n.name.common}>{n.name.common}</p>))
+      return (countries.map(n => <Countrie countrie={n}/>))
     } else {
       const countrie = countries[0]
-      console.log( 'pais',countrie)
       return (
-        <div>
-          <h1>{countrie.name.official}</h1>
-          <p>Capital: {countrie.capital}</p>
-          <p>Area: {countrie.area}</p>
-          <h2>Languages</h2>
-          <ul>
-            {Object.values(countrie.languages).map(n => <li key={n}>{n}</li>)}
-          </ul>
-          <img src={countrie.flags.png} alt="bandera" />
-        </div>
+        <CountrieInfo countrie={countrie}/>
       )
     }
   }
-
 
   return (
     <>
