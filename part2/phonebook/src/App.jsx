@@ -12,11 +12,12 @@ const App = () => {
   const [newNumber, setNewNumber] = useState('')
   const [newFilter, setNewFilter] = useState('')
   const [notificationMessage, setNotificationMessage] = useState(null)
+  const [notificationTipe, setNotificationTipe] = useState('good')
 
   useEffect(() => {
     personService
-    .getAll()
-    .then( initialPersons => {
+      .getAll()
+      .then(initialPersons => {
         setPersons(initialPersons)
       })
   }, [])
@@ -27,11 +28,11 @@ const App = () => {
 
   const addPerson = (event) => {
     event.preventDefault()
-    const repetidoNombre = persons.find((person) => { 
-      return person.name === newName 
+    const repetidoNombre = persons.find((person) => {
+      return person.name === newName
     })
-    const repetidoNumero = persons.find((person) => { 
-      return person.number === newNumber 
+    const repetidoNumero = persons.find((person) => {
+      return person.number === newNumber
     })
     if (repetidoNombre && repetidoNumero) {
       // Ya esta agregado igual
@@ -40,19 +41,28 @@ const App = () => {
       if (window.confirm(`${newName} is already added to phonebook, replace the old number with a new one?`)) {
         // Se cambia el numero
         const changePerson = persons.find(n => n.name === newName)
-        const changePersons = {... changePerson, number: newNumber}
+        const changePersons = { ...changePerson, number: newNumber }
         personService
-          .update(changePerson.id , changePersons)
-          .then( returnedPerson => {
+          .update(changePerson.id, changePersons)
+          .then(returnedPerson => {
             setPersons(persons.map(p => p.id !== returnedPerson.id ? p : returnedPerson))
             setNewName('')
             setNewNumber('')
+            setNotificationMessage(`${changePerson.name} was successfully updated`)
+            setNotificationTipe('good')
+            setTimeout(() => {
+              setNotificationMessage(null)
+            }, 5000)
           })
-        setNotificationMessage(`${changePerson.name} was successfully updated`)
-        setTimeout(() => {
-          setNotificationMessage(null)
-        }, 5000)
-    }
+          .catch(error => {
+            setNotificationMessage(`Information of ${changePerson.name} has already been removed from server`)
+            setNotificationTipe('bad')
+            setTimeout(() => {
+              setNotificationMessage(null)
+            }, 5000)
+            setPersons(persons.filter(n => n.name !== changePerson.name))
+          })
+      }
     } else {
       // Se crea un nuevo contacto
       const personObject = {
@@ -60,17 +70,18 @@ const App = () => {
         number: newNumber
       }
       personService
-      .create(personObject)
-      .then(returnedPerson => {
-        setPersons(persons.concat(returnedPerson))
-        setNewName('')
-        setNewNumber('')
-      })
+        .create(personObject)
+        .then(returnedPerson => {
+          setPersons(persons.concat(returnedPerson))
+          setNewName('')
+          setNewNumber('')
+        })
       setNotificationMessage(`Added ${personObject.name}`)
+      setNotificationTipe('good')
       setTimeout(() => {
-          setNotificationMessage(null)
-        }, 5000)
-    }  
+        setNotificationMessage(null)
+      }, 5000)
+    }
   }
 
   const handleNameChange = (event) => {
@@ -83,7 +94,7 @@ const App = () => {
     setNewNumber(event.target.value)
   }
 
-  const handleFilterChange = (event) => { 
+  const handleFilterChange = (event) => {
     // console.log(event.target.value)
     setNewFilter(event.target.value)
   }
@@ -91,10 +102,15 @@ const App = () => {
   const handleRemoveClick = (person) => {
     if (window.confirm(`Delete ${person.name} ?`)) {
       personService
-      .remove(person.id)
-      .then(function (response) {
-      setPersons(personsToShow.filter((personToShow)=>(personToShow.id!==response.id)))
-    })
+        .remove(person.id)
+        .then(function (response) {
+          setPersons(personsToShow.filter((personToShow) => (personToShow.id !== response.id)))
+          setNotificationMessage(`${person.name} was successfully delete`)
+          setNotificationTipe('good')
+            setTimeout(() => {
+              setNotificationMessage(null)
+            }, 4000)
+        })
     }
   }
 
@@ -102,18 +118,18 @@ const App = () => {
     <div>
       <h2>Phonebook</h2>
 
-      <Notification message={notificationMessage} />
+      <Notification message={notificationMessage} notificationTipe={notificationTipe}/>
 
-      <Filter handleFilterChange={handleFilterChange}/>
+      <Filter handleFilterChange={handleFilterChange} />
 
       <h3>add a new</h3>
 
-      <PersonForm addPerson={addPerson} newName={newName} handleNameChange={handleNameChange} newNumber={newNumber} handleNumberChange={handleNumberChange}/>
-      
+      <PersonForm addPerson={addPerson} newName={newName} handleNameChange={handleNameChange} newNumber={newNumber} handleNumberChange={handleNumberChange} />
+
       <h3>Numbers</h3>
 
-      <Persons personsToShow={personsToShow} handleRemoveClick={handleRemoveClick}/>
-      
+      <Persons personsToShow={personsToShow} handleRemoveClick={handleRemoveClick} />
+
     </div>
   )
 }
