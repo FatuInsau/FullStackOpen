@@ -12,19 +12,9 @@ const getCountrie = (countrie) => {
   return request.then(response => response.data)
 }
 
-// const create = newObject => {
-//   const request = axios.post(baseUrl, newObject)
-//   return request.then(response => response.data)
-// }
+const getWeather = (countrie) => {
+  const request = axios.get(`https://api.openweathermap.org/data/2.5/onecall/overview?lat=${countrie.capitalInfo.latlng[0]}&lon=${countrie.capitalInfo.latlng[1]}&appid=${key}`)
+  return request.then(response => response.data)
+}
 
-// const update = (id, newObject) => {
-//   const request = axios.put(`${baseUrl}/${id}`, newObject)
-//   return request.then(response => response.data)
-// }
-
-// const remove = (id) => {
-//   const request = axios.delete(`${baseUrl}/${id}`)
-//   return request.then(response => response.data)
-// }
-
-export default { getAll, getCountrie }
+export default { getAll, getCountrie, getWeather }

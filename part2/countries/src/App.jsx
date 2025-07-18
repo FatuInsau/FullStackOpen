@@ -32,7 +32,7 @@ function App() {
     } else if (countries.length>10) {
       return <p> Too many matches, specify another filter</p>
     } else if (countries.length>1) {
-      return (countries.map(n => <Countrie countrie={n}/>))
+      return (countries.map(n => <Countrie countrie={n} key={n.name.common}/>))
     } else {
       const countrie = countries[0]
       return (
