@@ -1,12 +1,20 @@
-# React + Vite
+# Countries
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+En este ejercicio, creamos una aplicación que permite consultar datos de varios países. Los datos se obtienen de la API https://open-meteo.com/, que proporciona una gran cantidad de datos de diferentes países en un formato legible por máquina (la llamada API REST).
 
-Currently, two official plugins are available:
+La interfaz de usuario es muy sencilla. El país que se muestra se encuentra escribiendo una consulta en el campo de búsqueda.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+En esta aplicación, también es posible ver el tiempo actual en la capital del país.
 
-## Expanding the ESLint configuration
+## Iniciar la aplicaciónn
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Para iniciar una aplicación, haga lo siguiente:
+
+```bash
+# Instalar dependencias
+$ npm install
+# Iniciar la aplicación
+$ npm run dev
+```
+
+Luego puedes acceder a la aplicación en: [http://localhost:5173/](http://localhost:5173/)

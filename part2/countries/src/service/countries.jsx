@@ -13,7 +13,7 @@ const getCountrie = (countrie) => {
 }
 
 const getWeather = (countrie) => {
-  const request = axios.get(`https://api.openweathermap.org/data/2.5/onecall/overview?lat=${countrie.capitalInfo.latlng[0]}&lon=${countrie.capitalInfo.latlng[1]}&appid=${key}`)
+  const request = axios.get(`https://api.open-meteo.com/v1/forecast?latitude=${countrie.capitalInfo.latlng[0]}&longitude=${countrie.capitalInfo.latlng[1]}&current=temperature_2m,wind_speed_10m&forecast_days=1&wind_speed_unit=ms`)
   return request.then(response => response.data)
 }
 

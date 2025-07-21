@@ -5,6 +5,7 @@ import Countrie from './components/Countrie'
 
 function App() {
 
+  const [allCountries, setAllCountries] = useState([])
   const [countries, setCountries] = useState([])
   const [filter, setFilter] = useState('')
 
@@ -12,7 +13,10 @@ function App() {
     countrieService
       .getAll()
       .then(initialCountries => {        
-        setCountries(initialCountries)
+        setAllCountries(initialCountries)
+      })
+      .catch((error)=>{
+        console.log('error')
       })
   }, [])
 
@@ -20,10 +24,9 @@ function App() {
     const newFilter = event.target.value
     setFilter(newFilter)
     const countriesFilter = newFilter
-    ? countries.filter(c => c.name.common.toLowerCase().includes(newFilter.toLowerCase()))
+    ? allCountries.filter(c => c.name.common.toLowerCase().includes(newFilter.toLowerCase()))
     : countries
     setCountries(countriesFilter)
-    
   }
 
   const showCountries = () => {
@@ -33,6 +36,8 @@ function App() {
       return <p> Too many matches, specify another filter</p>
     } else if (countries.length>1) {
       return (countries.map(n => <Countrie countrie={n} key={n.name.common}/>))
+    } else if (countries.length===0){
+      return <p>No match</p>
     } else {
       const countrie = countries[0]
       return (
@@ -44,7 +49,7 @@ function App() {
   return (
     <>
     <div>
-          find countries  <input onChange={handleFindChange}/>
+          find countries  <input value={filter} onChange={handleFindChange}/>
     </div>
     {showCountries()}
     </>

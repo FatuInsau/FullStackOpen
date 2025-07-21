@@ -15,6 +15,8 @@ Para iniciar una aplicación, haga lo siguiente:
 $ npm install
 # Iniciar la aplicación
 $ npm run dev
+# Iniciar el servidor
+$ npm run server
 ```
 
 Luego puedes acceder a la aplicación en: [http://localhost:5173/](http://localhost:5173/)

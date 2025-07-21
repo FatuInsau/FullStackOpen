@@ -28,16 +28,14 @@ const CountrieInfo = ({ countrie }) => {
       </ul>
       <img src={countrie.flags.png} alt="bandera" />
       <h2>Wheater in {countrie.capital}</h2>
-      {weather && weather.main && (
+      {weather ? (
         <>
-          <p>Temperature: {weather.main.temp} Celsius</p>
-          <img src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`} alt="clima" />
-          <p>Wind: {weather.wind.speed} m/s</p>
-          <p>Temperature {weather.main.temp} Celsius</p>
-          <img src={`https://openweathermap.org/img/wn/${weather.weather.icon}@2x.png`} alt="clima" />
-          <p>Wind {weather.wind.speed} m/s</p>
+          <p>Temperature: {weather.current.temperature_2m} Celsius</p>
+          <img width={'100px'} src='https://www.shutterstock.com/image-vector/sun-simple-flat-vector-design-600nw-2528102909.jpg' alt="clima" />
+          <p>Wind: {weather.current.wind_speed_10m} m/s</p>
         </>
-      )}
+      ) :
+      <p>Loading...</p>}
     </div>
   )
 }
