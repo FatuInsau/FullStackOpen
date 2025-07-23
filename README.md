@@ -1,4 +1,4 @@
-# [Full Stack Open 2023](https://fullstackopen.com/en/)
+# [Full Stack Open 2023](https://fullstackopen.com/es/)
 
 Este curso se imparte en el Departamento de Informática de la Universidad de Helsinki en la primavera de 2023.
 
@@ -7,7 +7,7 @@ Sirve como introducción al desarrollo moderno de aplicaciones web con JavaScrip
 GraphQL, una alternativa moderna a las APIs REST, también se abarca en este curso. También se abordan las pruebas, la configuración y la gestión del entorno, y el uso de MongoDB para el almacenamiento de datos de la aplicación. En la edición de este año también se incluye una sección sobre TypeScript. Este repositorio contiene mis soluciones para los ejercicios de este curso.
 
 <!-- 
-[couse certificate](https://studies.cs.helsinki.fi/stats/api/certificate/fullstackopen/en/fff9bc0633b27820d3a04756dd40455e) -->
+[couse certificate](https://studies.cs.helsinki.fi/stats/...) -->
 
 ### [Part 0 - Fundamentos de las aplicaciones](./part0)
 
@@ -15,9 +15,9 @@ GraphQL, una alternativa moderna a las APIs REST, también se abarca en este cur
 
 ### [Part 2 - Comunicándose con el servidor](./part2)
 
-<!-- ### [Part 3 - Programming a server with NodeJS and Express](./part3)
+ ### [Part 3 - Programming a server with NodeJS and Express](./part3)
 
-### [Part 4 - Testing Express servers, user administration](./part4)
+<!-- ### [Part 4 - Testing Express servers, user administration](./part4)
 
 ### [Part 5 - Testing React apps](./part5)
 

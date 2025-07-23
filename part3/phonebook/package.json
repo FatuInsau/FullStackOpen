@@ -1,0 +1,20 @@
+{
+  "name": "phonebook",
+  "version": "1.0.0",
+  "description": "En esta parte, nuestro enfoque se desplaza hacia el backend, es decir, hacia la implementación de la funcionalidad en el lado del servidor. Implementaremos una API REST simple en Node.js utilizando la librería Express, y los datos de la aplicación se almacenarán en una base de datos MongoDB. Al final de esta parte, desplegaremos nuestra aplicación en Internet.",
+  "license": "ISC",
+  "author": "FI",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
